@@ -1,39 +1,34 @@
-# Installing STM32CubeIDE
+# Chapter 0: Introduction — Arduino Portenta H7
 
-STM32CubeIDE is the official development environment for STM32 microcontrollers.  
-It combines the **STM32CubeMX** configuration tool with the **Eclipse-based IDE** for coding, compiling, and debugging.
+The **Arduino Portenta H7** is a powerful development board designed for **AI, IoT, and edge computing applications**.  
+Its main processor is the **dual-core STM32H747**, which includes:  
 
----
+- **Cortex® M7** running at **480 MHz**  
+- **Cortex® M4** running at **240 MHz**  
 
-## Prerequisites
-- Computer running **Windows / macOS / Linux**
-- Internet connection
-- A GitHub account (for project code)
-- Optional: An ST-LINK programmer/debugger
+The two cores communicate via a **Remote Procedure Call (RPC) mechanism** that allows seamless function calls across processors. Both processors share all the in-chip peripherals and can run:  
 
----
-
-## Step 1: Download STM32CubeIDE
-1. Go to the official STMicroelectronics website:  
-   [Download STM32CubeIDE](https://www.st.com/en/development-tools/stm32cubeide.html)
-2. Select your operating system (Windows, macOS, or Linux).
-3. Sign in or create a free **ST account** to download the installer.
+- Arduino sketches on top of the **Arm® Mbed™ OS**  
+- Native **Mbed™ applications**  
+- **MicroPython / JavaScript** via interpreter  
+- **TensorFlow™ Lite** for on-device AI  
 
 ---
 
-## Step 2: Install on Your System
+## Key Features
+- **Dual-core ARM Cortex-M7 + M4**  
+- Designed for **AI, IoT, and edge computing**  
+- Compatible with both **Arduino IDE** and **STM32CubeIDE**  
 
-### Windows
-- Run the downloaded `.exe` installer.
-- Follow the wizard (default settings are fine).
-- After installation, search for **STM32CubeIDE** in the Start Menu.
+---
 
-### macOS
-- Open the downloaded `.dmg` file.
-- Drag **STM32CubeIDE** to Applications.
-- Launch from Applications folder.
+## Why Use Portenta H7 for This Project?
+- Supports AI via **STM32 AI Developer Cloud**  
+- High performance for **real-time tasks** (e.g., bird sound detection)  
+- **Industrial-grade reliability**  
 
-### Linux
-- Make the installer executable:
-  ```bash
-  chmod +x st-stm32cubeide*.sh
+---
+
+## Pinout Configuration
+You can find the detailed Portenta H7 pinout diagram here:  
+[📑 Portenta H7 Pinout PDF](https://content.arduino.cc/assets/Pinout-PortentaH7_latest.pdf)
