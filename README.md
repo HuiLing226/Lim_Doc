@@ -28,6 +28,5 @@ The full pinout diagram of the Arduino Portenta H7 can be found here:
 
 [📄 View Pinout PDF](https://content.arduino.cc/assets/Pinout-PortentaH7_latest.pdf)  
 
-![Portenta H7 Pinout](https://content.arduino.cc/assets/Pinout-PortentaH7_latest.pdf)
 
 ---
