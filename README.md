@@ -1,6 +1,3 @@
-# STM32F446RE NUCLEO-64 Project Documentation
-
----
 
 ## Chap 00: Introduction
 
