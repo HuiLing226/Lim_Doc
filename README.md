@@ -99,9 +99,10 @@ The **NUCLEO-F446RE** are designed with **dual pinout compatibility**:
 1. Open **STM32CubeIDE**.  
 2. Go to **File > New > STM32 Project**.  
 3. In the MCU/Board selector:  
-   - Search for **NUCLEO-F446RE** or **STM32F446RE**.  
+   - Search for **STM32F446RET6**.  
 4. Select the board and click **Next**.  
-5. Name your project (e.g., `led_blink_test`).  
+![alt text](https://github.com/[username]/[reponame]/blob/[branch]/image.jpg?raw=true)
+5. Name your project.  
 6. Finish and let CubeIDE generate the project files.
 
 ### 3. Configure Clock & Peripherals
