@@ -1,96 +1,125 @@
-# Chapter 0: Introduction — Arduino Portenta H7
-
-The **Arduino Portenta H7** is a high-performance development board designed for **AI, IoT, and edge computing** applications.  
-
-Its main processor is the **dual-core STM32H747**, which includes:  
-- **Cortex® M7** running at **480 MHz**  
-- **Cortex® M4** running at **240 MHz**  
-
-The two cores communicate via a **Remote Procedure Call (RPC)** mechanism, which allows one core to call functions on the other seamlessly. Both processors share all in-chip peripherals and can run independently or cooperatively.
+# STM32F446RE NUCLEO-64 Project Documentation
 
 ---
 
-## Key Features
-- Designed for **AI, IoT, edge computing**  
-- Compatible with both **Arduino IDE** and **STM32CubeIDE**
+## Chap 00: Introduction
+
+### MCU Overview
+- **Core**: Arm® 32-bit Cortex®-M4 CPU with FPU  
+  - Adaptive real-time accelerator (ART Accelerator)  
+  - 0-wait state execution from Flash memory  
+  - Frequency: up to 180 MHz  
+  - Memory Protection Unit (MPU)  
+  - Performance: 225 DMIPS / 1.25 DMIPS/MHz (Dhrystone 2.1)  
+  - DSP instructions supported  
+
+### Memories
+- 512 Kbytes Flash memory  
+- 128 Kbytes SRAM  
+- Flexible external memory controller (up to 16-bit data bus): supports SRAM, PSRAM, SDRAM/LPSDR SDRAM, NOR/NAND Flash  
+- Dual-mode QuadSPI interface  
+
+### Interfaces & Peripherals
+- LCD parallel interface (8080/6800 modes)  
+- Clock, reset and supply management:  
+  - Supply range: 1.7 V to 3.6 V  
+  - POR, PDR, PVD and BOR  
+  - 4 to 26 MHz crystal oscillator  
+  - Internal 16 MHz RC (1% accuracy)  
+  - 32 kHz RTC oscillator + calibration  
+  - Internal 32 kHz RC + calibration  
+- Low power modes: Sleep, Stop, Standby  
+- VBAT supply for RTC, 20×32-bit backup registers, optional 4 KB backup SRAM  
+- ADC: 3×12-bit, up to 2.4 MSPS, 24 channels, 7.2 MSPS in triple interleaved mode  
+- DAC: 2×12-bit D/A converters  
+- DMA: 16-stream DMA controller with FIFO and burst support  
+- Timers: 17 total  
+  - 2 watchdogs  
+  - 1 SysTick  
+  - 12×16-bit timers  
+  - 2×32-bit timers  
+  - Up to 180 MHz operation, each with up to 4 IC/OC/PWM  
+
+### Debug
+- SWD and JTAG support  
+- Cortex-M4 Trace Macrocell™  
+
+### I/O Capabilities
+- Up to 114 I/O ports with interrupt capability  
+- Up to 111 fast I/Os (90 MHz)  
+- Up to 112 5 V-tolerant I/Os  
+
+### Communication Interfaces
+- SPDIF-Rx  
+- Up to 4 × I²C (SMBus/PMBus)  
+- Up to 4 × USART + 2 × UART (ISO7816, LIN, IrDA, modem control)  
+- Up to 4 × SPI (45 Mbit/s), 3 muxed with I²S (audio class accuracy)  
+- 2 × SAI (serial audio interface)  
+- 2 × CAN (2.0B Active)  
+- SDIO interface  
+- Consumer Electronics Control (CEC) interface  
+
+### Advanced Connectivity
+- USB 2.0 FS OTG controller with on-chip PHY  
+- USB 2.0 HS/FS OTG controller with DMA, ULPI, and PHY  
+- Dedicated USB power rail supports full-speed PHY across MCU voltage range  
+- 8–14 bit parallel camera interface (54 MB/s)  
+
+### Other Features
+- CRC calculation unit  
+- RTC with subsecond accuracy, hardware calendar  
+- 96-bit unique ID  
 
 ---
 
-## Why Use Portenta H7 for This Project?
-- Supports **AI** via **STM32 AI Developer Cloud**  
-- High performance for **real-time tasks** (e.g., bird sound detection)  
-- **Industrial-grade reliability** for robust deployment  
+### Pinout and Board Layout 
+
+The **NUCLEO-F446RE** are designed with **dual pinout compatibility**:
+
+1. **Arduino™ Uno R3 headers (female pin sockets)**  
+   - Allow direct plug-in of Arduino shields.  
+   - Pins are arranged as **D0–D15** (digital) and **A0–A5** (analog).  
+
+2. **ST morpho headers (male pin headers, CN7 & CN10)**  
+   - Provide **full access to nearly all STM32 pins**.  
+   - Enable advanced use cases beyond Arduino compatibility.  
 
 ---
 
-## Pinout Configuration
-The full pinout diagram of the Arduino Portenta H7 can be found here:  
-
-[📄 View Pinout PDF](https://content.arduino.cc/assets/Pinout-PortentaH7_latest.pdf)  
+#### 🔹 Pinout Layout on NUCLEO-F446RE
+ 
 
 
 ---
 
-# Chapter 1: Installation
+## Chap 01: Install STM32 and Get Started
 
-In this chapter, we will install and set up the required software to work with the Arduino Portenta H7.  
-We will start with the **Arduino IDE** for quick testing, and then move to **STM32CubeIDE** for more advanced development.
+### 1. Install STM32CubeIDE
+1. Download STM32CubeIDE from: [STM32CubeIDE](https://www.st.com/en/development-tools/stm32cubeide.html).  
+2. Install on your system (Windows, Linux, or macOS).  
+3. Launch the IDE.
 
----
+### 2. Setup a New Project
+1. Open **STM32CubeIDE**.  
+2. Go to **File > New > STM32 Project**.  
+3. In the MCU/Board selector:  
+   - Search for **NUCLEO-F446RE** or **STM32F446RE**.  
+4. Select the board and click **Next**.  
+5. Name your project (e.g., `led_blink_test`).  
+6. Finish and let CubeIDE generate the project files.
 
-## 1.1 Arduino IDE Setup
+### 3. Configure Clock & Peripherals
+- By default, NUCLEO-F446RE uses **HSE oscillator (8 MHz)** and can be configured up to **180 MHz** with PLL.  
+- For basic LED blink test, no special clock configuration is required.  
 
-The **Arduino IDE** is the easiest way to start programming the Portenta H7.  
-It allows you to quickly upload code and verify the board is functioning.
-
-### Steps:
-1. Download the **Arduino IDE** from the official website:  
-   👉 [https://www.arduino.cc/en/software](https://www.arduino.cc/en/software)
-
-2. Install the IDE and launch it.
-
-3. Go to **Tools > Board > Board Manager**.  
-   - Search for **Arduino Mbed OS Boards**.  
-   - Install the package that includes **Portenta H7**.
-
-4. Connect your Portenta H7 via **USB-C cable**.
-
-5. Select your board and port:  
-   - **Tools > Board > Arduino Portenta H7**  
-   - **Tools > Port > [Select the correct COM/tty port]**
-
-6. Upload the **Blink** example to test the board:  
-   - Go to **File > Examples > Basics > Blink**  
-   - Modify the LED pin if needed (use `LEDR`, `LEDG`, `LEDB`)  
-   - Click **Upload**
+### 4. Compile and Run Project
+1. Connect NUCLEO-F446RE via USB.  
+2. Select **Run > Debug** in CubeIDE.  
+3. IDE will flash the program onto the board using the built-in ST-LINK debugger.  
+4. The board will reset and run the program.
 
 ---
 
-## 1.2 STM32CubeIDE Setup
+## Chap 02: First Program – Blink the LED
 
-The **STM32CubeIDE** provides a professional development environment for the Portenta H7, offering full access to the STM32H747 microcontroller.
-
-### Steps:
-1. Download **STM32CubeIDE** from STMicroelectronics:  
-   👉 [https://www.st.com/en/development-tools/stm32cubeide.html](https://www.st.com/en/development-tools/stm32cubeide.html)
-
-2. Install the IDE and required USB drivers:  
-   - **ST-LINK / DFU drivers** from ST website.  
-
-3. Connect your Portenta H7 via **USB-C cable**.
-
-4. Create a new project:  
-   - Go to **File > New > STM32 Project**  
-   - Select the MCU **STM32H747** (dual-core)  
-   - Configure project name and settings  
-
-5. Open **CubeMX configuration** (built into CubeIDE)  
-   - Enable GPIO pins for LEDs (`LEDR`, `LEDG`, `LEDB`)  
-   - Generate initialization code  
-
-6. Write your first LED toggle program inside `main.c`.  
-   Example:  
-   ```c
-   HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0); // Example LED pin
-   HAL_Delay(500);
-
+> To be continued: GPIO configuration and example code for LED blinking (using LD2 at pin `PA5`).
