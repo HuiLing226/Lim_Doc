@@ -1,4 +1,3 @@
-<img width="960" height="720" alt="image" src="https://github.com/user-attachments/assets/15863e95-498e-4dc7-aa11-224f933a7bf9" />
 ## Chap 00: Introduction
 
 ### MCU Overview
@@ -77,8 +76,8 @@ The **NUCLEO-F446RE** are designed with **dual pinout compatibility**:
 1. **Arduino™ Uno R3 headers (female pin sockets)**  
    - Allow direct plug-in of Arduino shields.  
    - Pins are arranged as **D0–D15** (digital) and **A0–A5** (analog).  
-![alt text](http://url/to/https://os.mbed.com/media/uploads/jeromecoutant/nucleo_f446re_arduino_left_2021_10_26.png
-)
+https://os.mbed.com/media/uploads/jeromecoutant/nucleo_f446re_arduino_left_2021_10_26.png
+
 2. **ST morpho headers (male pin headers, CN7 & CN10)**  
    - Provide **full access to nearly all STM32 pins**.  
    - Enable advanced use cases beyond Arduino compatibility.  
