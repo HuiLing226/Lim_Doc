@@ -47,14 +47,15 @@
 - Up to 112 5 V-tolerant I/Os  
 
 ### Communication Interfaces
-- SPDIF-Rx  
-- Up to 4 × I²C (SMBus/PMBus)  
-- Up to 4 × USART + 2 × UART (ISO7816, LIN, IrDA, modem control)  
-- Up to 4 × SPI (45 Mbit/s), 3 muxed with I²S (audio class accuracy)  
-- 2 × SAI (serial audio interface)  
-- 2 × CAN (2.0B Active)  
-- SDIO interface  
-- Consumer Electronics Control (CEC) interface  
+- Up to 20 interfaces, including:  
+  - SPDIF-Rx  
+  - 4 × I²C (SMBus/PMBus)  
+  - 4 × USART + 2 × UART (11.25 Mbit/s, ISO7816, LIN, IrDA, modem control)  
+  - 4 × SPI (45 Mbit/s), 3 muxed with I²S  
+  - 2 × SAI (serial audio interface)  
+  - 2 × CAN (2.0B Active)  
+  - SDIO interface  
+  - Consumer Electronics Control (CEC) interface 
 
 ### Advanced Connectivity
 - USB 2.0 FS OTG controller with on-chip PHY  
