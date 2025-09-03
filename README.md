@@ -120,12 +120,16 @@ The **NUCLEO-F446RE** are designed with **dual pinout compatibility**:
 
 ### 3. Write Code in `main.c`in under while loop
 
-'''while (1)
+```
+while (1)
   {
     HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);  // Toggle LED on PA5
     HAL_Delay(500);                         // Delay 500 ms
   }
-}'''
+}
+```
+
+---
 
 ---
 
