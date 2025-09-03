@@ -101,7 +101,6 @@ The **NUCLEO-F446RE** are designed with **dual pinout compatibility**:
 3. In the MCU/Board selector:  
    - Search for **STM32F446RET6**.  
 4. Select the board and click **Next**.  
-![alt text](https://github.com/[username]/[reponame]/blob/[branch]/image.jpg?raw=true)
 5. Name your project.  
 6. Finish and let CubeIDE generate the project files.
 
@@ -120,12 +119,13 @@ The **NUCLEO-F446RE** are designed with **dual pinout compatibility**:
 - CubeIDE will generate `main.c` and HAL drivers.  
 
 ### 3. Write Code in `main.c`in under while loop
-  while (1)
+
+'''while (1)
   {
     HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);  // Toggle LED on PA5
     HAL_Delay(500);                         // Delay 500 ms
   }
-}
+}'''
 
 ---
 
