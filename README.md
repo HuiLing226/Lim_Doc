@@ -83,7 +83,7 @@ The **NUCLEO-F446RE** are designed with **dual pinout compatibility**:
 2. **ST morpho headers (male pin headers, CN7 & CN10)**  
    - Provide **full access to nearly all STM32 pins**.  
    - Enable advanced use cases beyond Arduino compatibility.  
-
+ ![alt text](https://os.mbed.com/media/uploads/jeromecoutant/nucleo_f446re_arduino_right_2021_10_26.png)
 
 ---
 
