@@ -105,18 +105,28 @@ The **NUCLEO-F446RE** are designed with **dual pinout compatibility**:
 5. Name your project.  
 6. Finish and let CubeIDE generate the project files.
 
-### 3. Configure Clock & Peripherals
-- By default, NUCLEO-F446RE uses **HSE oscillator (8 MHz)** and can be configured up to **180 MHz** with PLL.  
-- For basic LED blink test, no special clock configuration is required.  
-
-### 4. Compile and Run Project
-1. Connect NUCLEO-F446RE via USB.  
-2. Select **Run > Debug** in CubeIDE.  
-3. IDE will flash the program onto the board using the built-in ST-LINK debugger.  
-4. The board will reset and run the program.
-
+   
 ---
 
 ## Chap 02: First Program – Blink the LED
 
-> To be continued: GPIO configuration and example code for LED blinking (using LD2 at pin `PA5`).
+### 1. Configure Pin in STM32CubeIDE
+1. In the **.ioc file**, go to **Pinout & Configuration**.  
+2. Select pin **PA5** and set it as **GPIO_Output**.  
+3. CubeIDE will automatically add it under `GPIO`.  
+
+### 2. Generate Code
+- Select **Project > Generate Code** or short key **Alt+K**.  
+- CubeIDE will generate `main.c` and HAL drivers.  
+
+### 3. Write Code in `main.c`in under while loop
+  while (1)
+  {
+    HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);  // Toggle LED on PA5
+    HAL_Delay(500);                         // Delay 500 ms
+  }
+}
+
+---
+
+## Chap 3: 
