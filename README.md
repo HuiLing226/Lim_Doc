@@ -112,13 +112,16 @@ The **NUCLEO-F446RE** are designed with **dual pinout compatibility**:
 ### 1. Configure Pin in STM32CubeIDE
 1. In the **.ioc file**, go to **Pinout & Configuration**.  
 2. Select pin **PA5** and set it as **GPIO_Output**.  
+  - On the NUCLEO-F446RE board, the **LD2 (user LED)** is connected to **PA5**.
+  - Reference: [NUCLEO-F446RE Schematic Diagram] (https://github.com/HuiLing226/Lim_Doc/blob/main/NUCLEO_F446RE_SCHEMATICS.pdf)
 3. CubeIDE will automatically add it under `GPIO`.  
 
 ### 2. Generate Code
-- Select **Project > Generate Code** or short key **Alt+K**.  
-- CubeIDE will generate `main.c` and HAL drivers.  
+- Select **Project > Generate Code** (or press **Alt+K**).  
+- CubeIDE will generate `main.c` file along with the necessary HAL drivers.
 
 ### 3. Write Code in `main.c`in under while loop
+Inside the **while loop**, add the following code:
 
 ```
 while (1)
@@ -128,6 +131,13 @@ while (1)
   }
 }
 ```
+
+### 4. Build and Flash the program
+1. Go to **Project > Build Project** to compile the code.
+2. Connect the NUCLEO-F446RE board via USB.
+3. Select **Run > Run As > STM32 C/C++ Application**.
+4. The LED (LD2) on pin **PA5** will start blinking at 1 Hz (on/off every 500 ms).
+
 
 ---
 
