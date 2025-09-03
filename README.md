@@ -77,7 +77,6 @@ The **NUCLEO-F446RE** are designed with **dual pinout compatibility**:
    - Allow direct plug-in of Arduino shields.  
    - Pins are arranged as **D0–D15** (digital) and **A0–A5** (analog).
    ![alt text](https://os.mbed.com/media/uploads/jeromecoutant/nucleo_f446re_arduino_left_2021_10_26.png)
-
  ![alt text](https://os.mbed.com/media/uploads/jeromecoutant/nucleo_f446re_arduino_right_2021_10_26.png)
 
 2. **ST morpho headers (male pin headers, CN7 & CN10)**  
