@@ -113,7 +113,7 @@ The **NUCLEO-F446RE** are designed with **dual pinout compatibility**:
 1. In the **.ioc file**, go to **Pinout & Configuration**.  
 2. Select pin **PA5** and set it as **GPIO_Output**.  
   - On the NUCLEO-F446RE board, the **LD2 (user LED)** is connected to **PA5**.
-  - Reference: [NUCLEO-F446RE Schematic Diagram] (https://github.com/HuiLing226/Lim_Doc/blob/main/NUCLEO_F446RE_SCHEMATICS.pdf)
+  - Reference: [NUCLEO-F446RE Schematic Diagram](https://github.com/HuiLing226/Lim_Doc/blob/main/NUCLEO_F446RE_SCHEMATICS.pdf)
 3. CubeIDE will automatically add it under `GPIO`.  
 
 ### 2. Generate Code
