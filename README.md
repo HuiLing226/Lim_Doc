@@ -129,4 +129,4 @@ The **NUCLEO-F446RE** are designed with **dual pinout compatibility**:
 
 ---
 
-## Chap 3: 
+## Chap 03: 
