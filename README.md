@@ -1,6 +1,6 @@
 ## Chap 00: Introduction
 
-### MCU Overview
+### Overview
 - **Core**: Arm® 32-bit Cortex®-M4 CPU with FPU  
   - Adaptive real-time accelerator (ART Accelerator)  
   - 0-wait state execution from Flash memory  
@@ -78,12 +78,14 @@ The **NUCLEO-F446RE** are designed with **dual pinout compatibility**:
    - Pins are arranged as **D0–D15** (digital) and **A0–A5** (analog).
    ![alt text](https://os.mbed.com/media/uploads/jeromecoutant/nucleo_f446re_arduino_left_2021_10_26.png)
 
-
+ ![alt text](https://os.mbed.com/media/uploads/jeromecoutant/nucleo_f446re_arduino_right_2021_10_26.png)
 
 2. **ST morpho headers (male pin headers, CN7 & CN10)**  
    - Provide **full access to nearly all STM32 pins**.  
    - Enable advanced use cases beyond Arduino compatibility.  
- ![alt text](https://os.mbed.com/media/uploads/jeromecoutant/nucleo_f446re_arduino_right_2021_10_26.png)
+![alt text](https://os.mbed.com/media/uploads/jeromecoutant/nucleo_f446re_morpho_right_2021_10_26.png)
+![alt text](https://os.mbed.com/media/uploads/jeromecoutant/nucleo_f446re_morpho_left_2021_10_26.png)
+
 
 ---
 
