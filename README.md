@@ -143,4 +143,10 @@ while (1)
 
 ---
 
-## Chap 03: 
+## Chap 03: External Interrupts (EXTI)
+
+
+
+---
+
+## Chap 04: Sound input via I<sup>2</sup>S
