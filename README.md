@@ -11,7 +11,7 @@ The notes are organized by topics into separate folders for clarity.
 | Chapter / Topic        | Description |
 |-------------------------|-------------|
 | [Nucleo_H755](Nucleo_H755/README.md) | Notes and datasheets using the **Nucleo-H755 development board** |
-| [STM32](STM32/README.md) | General STM32 tutorials (CubeIDE setup, GPIO, blinking LED) |
+| [STM32](STM32/README.md) | General STM32 tutorials (CubeIDE setup, GPIO, blinking LED, etc.) |
 | [Microphone_Selection](Microphone_Selection/README.md) | Study of **analog vs. digital microphones** and chosen MEMS microphone (INMP441) |
 
 ---
