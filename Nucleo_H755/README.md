@@ -72,7 +72,7 @@ The overview of the board layout is as below:
 
 ---
 
-### I/O Capabilities
+## I/O Capabilities
 - Up to **168 GPIOs** with interrupts  
 - Many 5V-tolerant pins  
 - ST Zio (Arduino Uno V3 compatibility)  
