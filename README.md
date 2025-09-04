@@ -157,6 +157,7 @@ For STM32 audio projects, there are mainly **two categories** of microphones to 
   - **PDM (Pulse Density Modulation)** → supported on STM32 with libraries.  
   - **I²S (Inter-IC Sound)** → common and natively supported by STM32 peripherals.  
 
+
 For this project, we select the **SPH0645LM4H-B** digital MEMS(Micro-Electro Mechanical Systems) microphone.  
 
 - **Interface:** I²S → compatible with STM32 Nucleo-64 boards  
