@@ -1,4 +1,4 @@
-# STM32
+# STM32CubeIDE
 
 ## Chap 01: Install STM32 and Get Started
 
