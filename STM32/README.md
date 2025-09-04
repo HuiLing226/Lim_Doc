@@ -1,4 +1,5 @@
 # STM32
+// The tutorial below are using the Nucleo-64 board
 
 ## Chap 01: Install STM32 and Get Started
 
