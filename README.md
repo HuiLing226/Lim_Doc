@@ -1,4 +1,4 @@
-# Lim_Doc – STM32 Audio AI Project  
+# STM32 Audio AI Project  
 
 This repository documents the development of an **STM32-based Audio AI Project**, focusing on sound detection and bird species classification using digital MEMS microphones and machine learning.  
 
@@ -18,12 +18,3 @@ The notes are organized by topics into separate folders for clarity.
 
 ## 🚀 Project Goal  
 
-- Detect sounds using MEMS microphones.  
-- Identify if the sound comes from a **bird**.  
-- Classify the **bird species** using lightweight AI on STM32.  
-
-This repo will continue to grow with more detailed chapters covering:  
-- I²S audio input  
-- Feature extraction (MFCC, FFT)  
-- TinyML / TensorFlow Lite for Microcontrollers (TFLM)  
-- Deployment and testing on STM32 hardware  
