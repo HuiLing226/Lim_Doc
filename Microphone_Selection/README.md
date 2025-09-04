@@ -12,3 +12,62 @@ For STM32 audio projects, there are mainly **two categories** of microphones to 
 - Common output formats:  
   - **PDM (Pulse Density Modulation)** → supported on STM32 with libraries.  
   - **I²S (Inter-IC Sound)** → common and natively supported by STM32 peripherals.  
+
+--- 
+
+## INMP441 Digital MEMS Microphone
+For this project, we use the **INMP441** digital MEMS microphone as the audio input device. It is a simple, reliable, and widely supported I²S microphone that works well with the STM32H755 dual-core MCU.
+
+---
+
+## Key Specifications
+- **Type:** Digital MEMS microphone  
+- **Interface:** I²S (Inter-IC Sound) → directly supported by STM32H755  
+- **Frequency Response:** 60 Hz – 15 kHz → suitable for **bird calls** (1–8 kHz range)  
+- **Voltage Supply:** Single **3.3 V** supply  
+- **Power Consumption:** Low, enabling continuous outdoor monitoring  
+
+---
+
+## Advantages
+
+### Hardware Simplicity
+- Operates from a single 3.3 V supply  
+- Clear and standard **6-pin breakout pinout**:  
+  - **VDD, GND, SD (data), WS (word select), SCK (bit clock), L/R (channel select)**  
+- No external components required  
+- Widely available breakout boards  
+
+### STM32H755 Compatibility
+- Standard **I²S protocol** → fully supported by STM32 HAL and STM32CubeIDE  
+- **24-bit output** → fits well with H755’s DSP and AI capabilities  
+- Sample rates up to **50 kHz+** achievable  
+
+### Development Ease
+- Works seamlessly with **STM32CubeMX** (configure I²S peripheral)  
+- Many STM32 + INMP441 code examples available online  
+- Simple 4-wire I²S connection (plus power)  
+- Immediate audio capture without complex initialization  
+
+---
+
+## Basic Connection (Nucleo-H755ZI)
+
+INMP441 -> Nucleo-H755ZI
+VDD -> 3.3V
+GND -> GND
+SD -> I2S_SD pin
+WS -> I2S_WS pin
+SCK -> I2S_CK pin
+L/R -> GND (left channel) or 3.3V (right channel)
+
+
+---
+
+
+
+
+
+
+## Reference
+- **Datasheet:** [INMP441 PDF](https://invensense.tdk.com/wp-content/uploads/2015/02/INMP441.pdf)  
