@@ -18,7 +18,7 @@ For STM32 audio projects, there are mainly **two categories** of microphones to 
 ## SPH0645LM4H-B Digital MEMS Microphone
 For this project, we select the **SPH0645LM4H-B** digital MEMS microphone. 
 - **Type:** Digital MEMS microphone
-- **Interface:** I²S → compatible with STM32 Nucleo-64 boards
+- **Interface:** I²S → compatible with STM32 Nucleo-H755 boards
 - **Frequency Response:** 50 Hz – 15 kHz → Suitable for **bird calls**, which are mainly in the **1 kHz – 8 kHz** range.
 - **Voltage Supply:** 1.6 – 3.6 V → works with Nucleo-64’s 3.3 V supply.
 - **Power Consumption:** Low, suitable for continuous outdoor monitoring.
