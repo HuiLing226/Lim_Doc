@@ -32,7 +32,7 @@
 1. In the **.ioc file**, go to **Pinout & Configuration**.  
 2. Select pin **PB0, PB14, PE1** and set them as **GPIO_Output**.  
   - On the NUCLEO-H755 board, the **LD1(Green)** is connected to **PB0**, **LD2(Yellow)** is connected to **PE1** and **LD3(Red)** is connected to **PB14**.
-  - Reference: [Schematic_LEDs]
+  - Reference: [Schematic_LEDs](https://github.com/HuiLing226/Lim_Doc/blob/main/Nucleo_H755/ref/Sch_LEDs.jpg)
 3. CubeIDE will automatically add it under `GPIO`.
 
 <img width="330" height="327" alt="image" src="https://github.com/user-attachments/assets/4c28ea75-80f3-406c-a1b3-894150a54978" />
