@@ -2,11 +2,13 @@
 
 This repository documents the development of an **STM32-based Audio AI Project**, focusing on sound detection and bird species classification using digital MEMS microphones and machine learning.  
 
-The notes are organized by topics into separate folders for clarity.  
+## Executive Summary
+- **Project Overview:** Brief description of the dual-chip bird sound detection and species classification system
+- **Key Features:** Real-time detection, species identification, embedded AI implementation
+- **Hardware Platform:** STM32H755ZI dual-core microcontroller with INMP441 microphone
+- **Development Environment:** STM32CubeIDE + STM32 AI toolkit
 
----
-
-## 📚 Table of Contents  
+## Table of Contents  
 
 | Chapter / Topic        | Description |
 |-------------------------|-------------|
@@ -16,5 +18,10 @@ The notes are organized by topics into separate folders for clarity.
 
 ---
 
-## 🚀 Project Goal  
+## Project Goal
+Develop an embedded system capable of detecting and classifying bird sounds.
+### Technical Objectives:
+- Implement real-time audio processing
+- Deploy AI models on embedded hardware
+- Achieve acceptable accuracy for bird detection and species classification
 
