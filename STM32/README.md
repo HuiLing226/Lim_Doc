@@ -60,7 +60,7 @@ while (1)
 
 ### 2. Software Setup
 - [STM32CubeIDE](https://www.st.com/en/development-tools/stm32cubeide.html)  
-- [Tera Term]([https://ttssh2.osdn.jp/index.html.en](https://github.com/TeraTermProject/teraterm/releases/download/v5.4.1/teraterm-5.4.1.exe)
+- [Tera Term](https://github.com/TeraTermProject/teraterm/releases/download/v5.4.1/teraterm-5.4.1.exe)
 
 ### 3. STM32CubeIDE Configuration
 1. Create a new STM32 project for **STM32F446RETx**.  
