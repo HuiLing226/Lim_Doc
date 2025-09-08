@@ -65,13 +65,41 @@ while (1)
 
 4. All three LEDs should turn on as shown [here].
 
+---
 
+## Chap 03: Second Program – Toggle Green LED, Press Button → Red LED ON
+### 1. Configure Pin
+1. In the **Pinout & Configuration**, set
+   - PB0 → `GPIO_Output` (Green LED)
+   - PB14 → `GPIO_Output` (Red LED)
+   - PC13 → `GPIO_Input` (User Button), can refer to the schematic [here]
+     
+### 2. Generate code
+### 3. Write code in `main.c`
 
+```
+/* USER CODE BEGIN WHILE */
+while (1)
+{
+    // Toggle Green LED every 500 ms
+    HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0);
+    HAL_Delay(500);
 
+    // If button is pressed (active LOW on PC13)
+    if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13) == GPIO_PIN_RESET)
+    {
+        HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET); // Red LED ON
+    }
+    else
+    {
+        HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET); // Red LED OFF
+    }
+}
+/* USER CODE END WHILE */
+```
 
-
-
-
-
-## First program --- Blink all the 3 LEDs
-## Second program --- Toggle LED at 500ms
+### 4. Build and upload.
+The output should be: [click_here]
+- Green LED toggles every 500 ms.
+- Press User Button → Red LED turns ON.
+- Release Button → Red LED turns OFF.
