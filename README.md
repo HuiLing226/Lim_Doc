@@ -13,7 +13,7 @@ This repository documents the development of an **STM32-based Audio AI Project**
 | Chapter / Topic        | Description |
 |-------------------------|-------------|
 | [Nucleo_H755](Nucleo_H755/README.md) | Notes and datasheets using the **Nucleo-H755 development board** |
-| [STM32](STM32/GetStr/README.md) | General STM32 tutorials (CubeIDE setup, GPIO, blinking LED, etc.) |
+| [Getting_Start](STM32/GetStr/README.md) | General STM32 tutorials (CubeIDE setup, GPIO, blinking LED, etc.) |
 | [Microphone_Selection](Microphone_Selection/README.md) | Study of **analog vs. digital microphones** and chosen MEMS microphone (SPH0645LM4H) |
 
 ---
