@@ -17,6 +17,20 @@
 - Example: Train a classifier on labeled images of cats vs dogs.
 
 ---
+### Comparison Table
+ 
+
+| Aspect               | Traditional Programming                               | Machine Learning                                                                           |
+|-----------------------|-------------------------------------------------------|----------------------------------------------------------------|
+| **Approach**          | Explicit rules written by humans                      | Learns from data with labeled examples                         |
+| **Data dependency**   | Low – depends on programmer’s logic                   | High – quality/quantity of data determines performance          |
+| **Flexibility**       | Low – code must be updated manually                   | Moderate – retrain model with new data                          |
+| **Problem complexity**| Best for simple, deterministic logic                  | Good for complex patterns (NLP, analytics)                    |
+| **Development**       | Linear & predictable (design → code → debug)          | Iterative (train → evaluate → tune)                               |
+| **Outcome**           | Predictable if inputs + rules are known               | May be less interpretable (depends on algorithm)                    |**Best for**        | Simple, rule-based tasks           | Structured data with clear features      | 
+<img width="425" height="316" alt="image" src="https://github.com/user-attachments/assets/ef08ebfc-e318-4f3b-a22a-b1f5608d825f" />
+
+--- 
 
 ## Deep Learning (DL)
 - Subset of ML using **multi-layer neural networks**.
@@ -27,15 +41,5 @@
 
 ---
 
-## Comparison Table
- 
-
-| Aspect               | Traditional Programming                               | Machine Learning                                               | Deep Learning                                      |
-|-----------------------|-------------------------------------------------------|----------------------------------------------------------------|---------------------------------------------------|
-| **Approach**          | Explicit rules written by humans                      | Learns from data with labeled examples                         | Learns features automatically from raw data        |
-| **Data dependency**   | Low – depends on programmer’s logic                   | High – quality/quantity of data determines performance         | Very high – requires large datasets to generalize  |
-| **Flexibility**       | Low – code must be updated manually                   | Moderate – retrain model with new data                         | High – retrain large models, can adapt automatically |
-| **Problem complexity**| Best for simple, deterministic logic                  | Good for complex patterns (NLP, analytics)                     | Best for highly complex data (vision, speech, audio)|
-| **Development**       | Linear & predictable (design → code → debug)          | Iterative (train → evaluate → tune)                            | Iterative, compute-intensive, experimental          |
-| **Outcome**           | Predictable if inputs + rules are known               | May be less interpretable (depends on algorithm)                | Often “black box” – low interpretability            |**Best for**        | Simple, rule-based tasks           | Structured data with clear features      | Complex data (images, speech, audio)    |
-
+The hierarchy relationship is shown below:
+<img width="537.6" height="472.5" alt="image" src="https://github.com/user-attachments/assets/37fb05cd-1772-4471-a0f5-bcbc2f0399e5" />
