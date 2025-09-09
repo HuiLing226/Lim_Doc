@@ -1,3 +1,5 @@
+## CHAP 1: TinyML (Tiny Machine Learning)
+
 ## Structure of a Simple Neural Network
 
 ### Layers
