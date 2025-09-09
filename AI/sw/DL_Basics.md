@@ -1,3 +1,53 @@
+## Structure of a Simple Neural Network
+
+### Layers
+1. **Input Layer** – Takes input values (e.g., 28×28 pixel image → 784 neurons).
+2. **Hidden Layer(s)** – Processes inputs using weights, bias, and activation functions.
+3. **Output Layer** – Produces the final prediction (e.g., digits 0–9).
+
+### Flow
+- Input → Hidden layer(s) → Output.
+- Each connection has a **weight** that scales importance.
+- Each neuron has a **bias** to shift activation.
+- Activation functions (ReLU, Sigmoid, etc.) introduce non-linearity.
+
+  ---
+
+## How a Neuron Works
+
+### Step 1: Input
+- Each pixel (0–1 grayscale value) enters as activation.
+- Example: MNIST digit → 28×28 = 784 input neurons.
+
+### Step 2: Weighted Sum + Bias
+Each hidden neuron computes:
+\[
+z = \sum (w_i \cdot x_i) + b
+\]
+
+- \(w_i\): weight
+- \(x_i\): input activation
+- \(b\): bias
+
+### Step 3: Activation Function
+\[
+a = f(z)
+\]
+- Converts weighted sum into nonlinear output.
+- Common functions: ReLU, Sigmoid, Tanh.
+
+### Step 4: Output Decision
+- Output layer has 10 neurons (0–9).
+- Neuron with highest activation = prediction.
+
+### Step 5: Backpropagation
+- Forward pass: input → output prediction.
+- Compute loss (error).
+- Backward pass: gradients flow backward to adjust weights and bias.
+- Repeat until error minimized.
+
+--- 
+
 ## What is TinyML?
 
 - Fusion of ML and embedded systems.
