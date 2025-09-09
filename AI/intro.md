@@ -40,7 +40,7 @@
 
   ---
 
-  ## Chap 3: How a Neuron Works
+## Chap 3: How a Neuron Works
 
 ### Step 1: Input
 - Each pixel (0–1 grayscale value) enters as activation.
