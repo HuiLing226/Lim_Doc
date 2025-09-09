@@ -1,48 +1,38 @@
 # AI introduction
 
-## Machine Learning (ML) vs Deep Learning (DL)
+## Traditional Programming vs Machine Learning vs Deep Learning
 
-### Machine Learning (ML)
-- Human extracts features (color, shape, texture).
-- Algorithm (e.g., SVM, Decision Tree) learns from features.
-- Works well with smaller datasets.
-- Example: Classify food if it’s *burger* or *fried chicken* based on manually chosen features.
-
-### Deep Learning (DL)
-- Uses neural networks with many hidden layers.
-- Learns features automatically from raw data.
-- Requires large datasets and compute power.
-- Example: Input raw food images → CNN automatically learns buns, chicken texture, etc.
-
-### Key Differences
-
-| Aspect              | Machine Learning             | Deep Learning                      |
-|---------------------|------------------------------|------------------------------------|
-| Feature extraction  | Manual, human-designed       | Automatic, learned by the network  |
-| Complexity          | Simple models, small data    | Complex models, large data         |
-| Interpretability    | Easy to understand           | More like a “black box”            |
-| Use cases           | Spam detection, regression   | Image/audio recognition, NLP       |
+### Traditional Programming
+- Humans explicitly write the rules.
+- Program follows: **IF condition → THEN action**.
+- Works well for simple, well-defined problems.
+- Example: “If temperature > 30°C, turn on fan.”
 
 ---
 
+### Machine Learning (ML)
+- Humans provide **examples (data + labels)** instead of rules.
+- Algorithm learns patterns and rules by itself.
+- Needs **feature engineering** (humans decide which features are important).
+- Example: Feed a classifier features like *beak length, feather color* → predicts bird species.
 
-## Deep Learning vs Convolutional Neural Networks (CNN)
+---
 
 ### Deep Learning (DL)
-- General term for using deep (multi-layer) neural networks.
-- Fully connected layers: every input neuron connects to every neuron in next layer.
-- Works but becomes inefficient for large images.
+- Subset of ML using **multi-layer neural networks**.
+- Learns features **automatically from raw data**.
+- Handles very complex data (images, audio, text).
+- Needs more data and computation.
+- Example: Input raw bird images → CNN automatically detects edges, shapes, feathers → predicts species.
 
-### Convolutional Neural Networks (CNN)
-- Special type of DL designed for image/audio data.
-- Uses **convolutions** instead of full connections.
-- Convolutional filters detect local patterns (edges, textures, shapes).
-- Pooling layers reduce size while keeping features.
-- Final dense layer does classification.
+---
 
-### Why CNN for Audio (Spectrograms)?
-- Spectrograms are like images (time vs frequency).
-- CNN can learn:
-  - Low-level features (edges, harmonics).
-  - Mid-level features (chirps, patterns).
-  - High-level features (bird species).
+### Quick Comparison Table
+
+| Aspect              | Traditional Programming            | Machine Learning                        | Deep Learning                          |
+|---------------------|------------------------------------|-----------------------------------------|----------------------------------------|
+| **Rules**           | Written by humans                  | Learned from data (with labels)          | Learned from raw data                   |
+| **Feature extraction** | Not needed (rules coded)           | Manual (handcrafted by humans)           | Automatic (learned by network)          |
+| **Data needs**      | Low                                | Moderate                                 | Very high (big data)                   |
+| **Computation**     | Lightweight                        | Moderate                                 | Heavy (needs GPU/optimized hardware)    |
+| **Best for**        | Simple, rule-based tasks           | Structured data with clear features      | Complex data (images, speech, audio)    |
