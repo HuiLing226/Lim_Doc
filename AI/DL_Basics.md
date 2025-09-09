@@ -1,11 +1,49 @@
+# Deep Learning Basics
+
 ## CHAP 1: TinyML (Tiny Machine Learning)
 
-## Structure of a Simple Neural Network
+### What is TinyML?
+According to [tinyml.org](https://www.tinyml.org/):  
+> “Tiny machine learning is broadly defined as a fast-growing field of machine learning technologies and applications including hardware, algorithms, and software capable of performing on-device sensor data analytics at extremely low power (typically in the mW range and below), and hence enabling a variety of always-on use cases targeting battery operated devices.”
 
-### Layers
+TinyML = **AI at the edge**, running on **low-power microcontrollers**.
+
+---
+
+### Benefits of TinyML
+- **Low Latency:** Inference runs on-device → no internet delays.
+- **Energy Savings:** MCUs consume very little power, often running for months/years on batteries.
+- **Reduced Bandwidth:** No need to stream raw sensor data to the cloud.
+- **Data Privacy:** Data stays on-device → higher privacy.
+
+---
+
+### Why is TinyML Important?
+TinyML enables us to **do more with less**:  
+- Bring AI to billions of low-cost IoT devices.  
+- Enable **always-on sensing** without draining batteries.  
+- Complement cloud AI (train in the cloud, deploy at the edge).  
+
+
+---
+
+## CHAP 2: Neural Networks Fundamentals
+### What are Neural Networks?
+Neural networks (also called **Artificial Neural Networks, ANNs**) form the foundation of **deep learning**.  
+They are inspired by the structure and function of the human brain, where neurons signal to one another.
+
+- Neural networks are a **subfield of Machine Learning**.
+- They consist of **layers of artificial neurons** that transform inputs into outputs.
+- By adjusting weights and biases, they learn complex patterns from data.
+
+---
+
+### Structure of a Simple Neural Network
+
 1. **Input Layer** – Takes input values (e.g., 28×28 pixel image → 784 neurons).
 2. **Hidden Layer(s)** – Processes inputs using weights, bias, and activation functions.
 3. **Output Layer** – Produces the final prediction (e.g., digits 0–9).
+<img width="400" height="267" alt="image" src="https://github.com/user-attachments/assets/b7c873b2-d9f4-4fe3-bb03-bd2459878b30" />
 
 ### Flow
 - Input → Hidden layer(s) → Output.
@@ -13,9 +51,9 @@
 - Each neuron has a **bias** to shift activation.
 - Activation functions (ReLU, Sigmoid, etc.) introduce non-linearity.
 
-  ---
+---
 
-## How a Neuron Works
+### How a Neuron Works
 
 ### Step 1: Input
 - Each pixel (0–1 grayscale value) enters as activation.
@@ -50,43 +88,6 @@ a = f(z)
 
 --- 
 
-## What is TinyML?
-
-- Fusion of ML and embedded systems.
-- Models compressed (GB → KB).
-- Optimized for low-power devices.
-- Applications:
-  - Keyword spotting (“Hey Arduino”).
-  - Gesture recognition.
-  - Environmental monitoring (bird sounds).
-  - Healthcare devices.
-
-**Key Benefits:**
-- Long battery life.
-- Real-time response.
-- Cost-efficient.
-
----
-
-## TinyML vs Cloud AI
-
-**Cloud AI:**
-- Runs on servers/GPUs.
-- High compute power.
-- Requires internet.
-- Latency & privacy concerns.
-
-**TinyML:**
-- Runs on microcontrollers (e.g., STM32).
-- Low power (milliwatts).
-- Offline, real-time.
-- Private (data stays on device).
-
-**Partnership:**
-- Cloud: train big models, manage data.
-- TinyML: deploy small optimized models locally.
-
---- 
 
 ## Google Colab
 
