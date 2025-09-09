@@ -41,5 +41,5 @@
 
 ---
 
-The hierarchy relationship is shown below:
+The hierarchy relationship is shown below, which will be discussed in the next chapter:
 <img width="537.6" height="472.5" alt="image" src="https://github.com/user-attachments/assets/37fb05cd-1772-4471-a0f5-bcbc2f0399e5" />
