@@ -28,6 +28,11 @@ TinyML enables us to **do more with less**:
 ---
 
 ## CHAP 2: Neural Networks Fundamentals
+### How a Neuron Works
+
+A neuron is the fundamental building block of a neural network.  
+It receives inputs, applies weights and biases, and passes the result through an activation function.
+
 ### What are Neural Networks?
 Neural networks (also called **Artificial Neural Networks, ANNs**) form the foundation of **deep learning**.  
 They are inspired by the structure and function of the human brain, where neurons signal to one another.
@@ -38,123 +43,113 @@ They are inspired by the structure and function of the human brain, where neuron
 
 ---
 
-### Structure of a Simple Neural Network
+### Mathematical Model
+For inputs [x₁, x₂, ..., xₙ] with weights [w₁, w₂, ..., wₙ] and bias [b]:
 
-1. **Input Layer** – Takes input values (e.g., 28×28 pixel image → 784 neurons).
-2. **Hidden Layer(s)** – Processes inputs using weights, bias, and activation functions.
-3. **Output Layer** – Produces the final prediction (e.g., digits 0–9).
-<img width="400" height="267" alt="image" src="https://github.com/user-attachments/assets/b7c873b2-d9f4-4fe3-bb03-bd2459878b30" />
+$$z = \sum_{i=1}^n w_i x_i + b$$
 
-### Flow
-- Input → Hidden layer(s) → Output.
-- Each connection has a **weight** that scales importance.
-- Each neuron has a **bias** to shift activation.
-- Activation functions (ReLU, Sigmoid, etc.) introduce non-linearity.
+The output of the neuron is:
+
+$$y = f(z)$$
+
+where:
+- $w_i$ = weight (importance of each input)  
+- $b$ = bias (adjusts the output threshold)  
+- $f(\cdot)$ = activation function (introduces nonlinearity)  
+
+#### Activation Functions
+
+- **Sigmoid:** $f(x) = \frac{1}{1+e^{-x}}$ → squashes output between (0,1)
+- **ReLU:** $f(x) = \max(0, x)$ → passes positive values, blocks negatives
+- **tanh:** outputs values between (-1,1), centered at 0
+
+These functions allow the network to model complex, non-linear relationships.
 
 ---
 
-### How a Neuron Works
+### From Neuron to Neural Network
 
-### Step 1: Input
-- Each pixel (0–1 grayscale value) enters as activation.
-- Example: MNIST digit → 28×28 = 784 input neurons.
+A single neuron is limited. To solve real problems, neurons are connected into layers:
 
-### Step 2: Weighted Sum + Bias
-Each hidden neuron computes:
-\[
-z = \sum (w_i \cdot x_i) + b
-\]
+1. **Input Layer**
+   - First layer, takes raw data (e.g., pixel values of an image).  
+   - Example: MNIST image (28 × 28 = 784 inputs).  
 
-- \(w_i\): weight
-- \(x_i\): input activation
-- \(b\): bias
+2. **Hidden Layers**
+   - Each neuron receives outputs from previous neurons.
+   - They apply weights, biases, and activations to build higher-level features.  
+   - Example: first hidden layer detects edges, later layers combine edges into shapes.  
 
-### Step 3: Activation Function
-\[
-a = f(z)
-\]
-- Converts weighted sum into nonlinear output.
-- Common functions: ReLU, Sigmoid, Tanh.
+3. **Output Layer**
+   - Final predictions (e.g., 10 neurons for digits 0–9).
+   - The neuron with the highest activation = network’s decision.  
 
-### Step 4: Output Decision
-- Output layer has 10 neurons (0–9).
-- Neuron with highest activation = prediction.
+<img width="400" height="267" alt="image" src="https://github.com/user-attachments/assets/b7c873b2-d9f4-4fe3-bb03-bd2459878b30" />
 
-### Step 5: Backpropagation
-- Forward pass: input → output prediction.
-- Compute loss (error).
-- Backward pass: gradients flow backward to adjust weights and bias.
-- Repeat until error minimized.
+### Forward Pass (Information Flow)
+1. Input → multiplied by weights → summed with bias.  
+2. Result passes through an activation function.  
+3. Output flows to the next layer.
+   
+### Backpropagation (Learning)
+- After a forward pass, compare prediction with the true label → compute **loss**.  
+- Send the error backward → update weights and biases.  
+- Repeat over many **epochs** until the model improves.
+  
+##An **epoch** means **one full pass through the entire training dataset**.
 
---- 
+- If you have 60,000 training images (like MNIST),  
+  then **1 epoch = the model sees all 60,000 images once**.  
+- Training usually requires **multiple epochs** (e.g., 5, 10, 20).  
+- With each epoch, the model improves by adjusting weights and biases using backpropagation.
 
+---
 
-## Google Colab
+## CHAP 3: Practical Implementation
+### Google Colab
 
 - Free cloud Jupyter environment from Google.
 - Preinstalled with TensorFlow, NumPy.
 - Free GPU acceleration.
-- Runs in browser, no setup.
+- Runs in a browser, no setup required.
 
 **Steps:**
-1. Go to https://colab.research.google.com
-2. Sign in → New Notebook.
-3. Run Python/TensorFlow code directly.
-4. Save automatically to Google Drive.
+1. Go to [Google Colab](https://colab.research.google.com)  
+2. Sign in → New Notebook  
+3. Run Python/TensorFlow code directly  
+4. Saves automatically to Google Drive  
 
-Enable GPU: Runtime → Change runtime type → GPU.
+Enable GPU:  
+- Runtime → Change runtime type → GPU  
 
----
-
-## TensorFlow
+### TensorFlow
 
 - Open-source ML library by Google.
-- `tf.keras`: easy API for building networks.
-- `tf.lite`: lightweight models for embedded.
+- `tf.keras`: High-level API for building and training networks.  
+- `tf.lite`: For deploying lightweight models on embedded devices.
 
-**Example:**
-```python
-from tensorflow.keras import layers, models
-model = models.Sequential([
-    layers.Dense(128, activation='relu', input_shape=(784,)),
-    layers.Dense(10, activation='softmax')
-])
-```
-
+### MNIST Dataset
+- 70,000 grayscale images of handwritten digits (0–9).
+- 60,000 training + 10,000 testing samples.
+- Each image: 28 × 28 pixels.
+- Considered the "Hello World" of Deep Learning.
+  
 ---
 
-## MNIST Dataset
-
-- 70,000 handwritten digits (0–9).
-- 60k training, 10k testing.
-- Each image: 28×28 pixels grayscale.
-- Classic "Hello World" of DL.
-
-**Load in TensorFlow:**
-```python
-from tensorflow import keras
-(x_train, y_train), (x_test, y_test) = keras.datasets.mnist.load_data()
-x_train, x_test = x_train/255.0, x_test/255.0
-```
----
-
-## Your First Neural Network in Code
-
-**Step 1: Import**
+### Your First Neural Network in Code
+#### Step 1: Import Libraries
 ```python
 import tensorflow as tf
 from tensorflow import keras
-x_train = x_train.reshape(-1,784).astype("float32")/255
-x_test = x_test.reshape(-1,784).astype("float32")/255
 ```
 
-**Step 2: Preprocess**
+#### Step 2: Preprocess Data
 ```python
 x_train = x_train.reshape(-1,784).astype("float32")/255
 x_test = x_test.reshape(-1,784).astype("float32")/255
 ```
 
-**Step 3: Model**
+#### Step 3: Define the Model
 ```python
 model = keras.Sequential([
     keras.layers.Dense(128, activation="relu", input_shape=(784,)),
@@ -162,24 +157,23 @@ model = keras.Sequential([
 ])
 ```
 
-**Step 4: Compile**
+#### Step 4: Compile the Model
 ```python
 model.compile(optimizer="adam",
               loss="sparse_categorical_crossentropy",
               metrics=["accuracy"])
 ```
 
-**Step 5: Train**
+#### Step 5: Train the Model
 ```python
 model.fit(x_train, y_train, epochs=5, batch_size=32)
 ```
 
-**Step 6: Evaluate**
+#### Step 6: Evaluate the Model
 ```python
 test_loss, test_acc = model.evaluate(x_test, y_test)
 print("Accuracy:", test_acc)
 ```
-
 ---
 
 ## QNA
