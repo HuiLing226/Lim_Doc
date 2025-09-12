@@ -63,11 +63,11 @@ while (1)
 
 ## Chap 03: Second Program – Toggle Green LED (M7 core), Press Button → Red LED ON(M4 core)
 ### 1. Configure Pin
-1. In the **Pinout & Configuration**, set
+###### In the **Pinout & Configuration**, set
    - PB0 → `GPIO_Output` (Green LED) 
    - PB14 → `GPIO_Output` (Red LED)
    - PC13 → `GPIO_Input` (User Button), can refer to the schematic [here](https://github.com/HuiLing226/Lim_Doc/blob/7da4ec7e2d9e35bde300ad8c19532d9a24745dea/Nucleo_H755/ref/Sch_Button.png)
-2. Under **Pin Context Assignment**, set
+###### Under **Pin Context Assignment**, set
    - PB0 → ARM Cortex-M7
    - PB14 → ARM Cortex-M4
    - PC13 → ARM Cortex-M4
