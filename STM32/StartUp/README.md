@@ -8,17 +8,15 @@
 
 ### 2. Setup a New Project
 1. Open **STM32CubeIDE**.  
-2. Go to **File > New > STM32 Project**.
-    <img width="1204" height="676" alt="image" src="https://github.com/user-attachments/assets/9df3d9bc-9cea-4ec0-a813-3f06ef656afd" />
+2. Go to **File > New > STM32 Project**.<img width="1204" height="676" alt="image" src="https://github.com/user-attachments/assets/9df3d9bc-9cea-4ec0-a813-3f06ef656afd" />
 3. In the MCU/Board selector:  
    - Search for **STM32H755ZIT3**.  
-4. Select the board and click **Next**.
-    <img width="1372" height="1012" alt="image" src="https://github.com/user-attachments/assets/8a5b43ec-cfda-48e9-a5c9-ad9a4ef28ba0" />
+4. Select the board and click **Next**.<img width="1372" height="1012" alt="image" src="https://github.com/user-attachments/assets/8a5b43ec-cfda-48e9-a5c9-ad9a4ef28ba0" />
 5. Name your project.  
-6. Finish and let CubeIDE generate the project files.
+6. Finish and let CubeIDE generate the project files.<img width="297" height="331" alt="image" src="https://github.com/user-attachments/assets/28ec7b87-bcbd-499d-8099-c71d16f1ae8a" />
 
-   <img width="297" height="331" alt="image" src="https://github.com/user-attachments/assets/28ec7b87-bcbd-499d-8099-c71d16f1ae8a" />
 
+   
 #### ##CubeIDE will generate two projects:
 - `Project_CM7` → primary core -- it starts first after reset.
 - `Project_CM4` → does not start by default -- only executes when explicitly activated by CM7.
@@ -33,9 +31,7 @@
 2. Select pin **PB0, PB14, PE1** and set them as **GPIO_Output**.  
   - On the NUCLEO-H755 board, the **LD1(Green)** is connected to **PB0**, **LD2(Yellow)** is connected to **PE1** and **LD3(Red)** is connected to **PB14**.
   - Reference: [Schematic_LEDs](https://github.com/HuiLing226/Lim_Doc/blob/main/Nucleo_H755/ref/Sch_LEDs.jpg)
-3. CubeIDE will automatically add it under `GPIO`.
-
-<img width="330" height="327" alt="image" src="https://github.com/user-attachments/assets/4c28ea75-80f3-406c-a1b3-894150a54978" />
+3. CubeIDE will automatically add it under `GPIO`.<img width="330" height="327" alt="image" src="https://github.com/user-attachments/assets/4c28ea75-80f3-406c-a1b3-894150a54978" />
 
 
 ### 2. Generate Code
@@ -56,12 +52,10 @@ while (1)
 ```
 
 ### 4. Build and Flash the program
-1. Go to **Project > Build Project** to compile the code.
-<img width="355" height="235" alt="image" src="https://github.com/user-attachments/assets/ec9fb4e0-a3f5-481d-bec3-f1ab281791dc" />
+1. Go to **Project > Build Project** to compile the code.<img width="355" height="235" alt="image" src="https://github.com/user-attachments/assets/ec9fb4e0-a3f5-481d-bec3-f1ab281791dc" />
 
 2. Connect the NUCLEO-H755 board via USB.
-3. Select **Run > Run As > STM32 C/C++ Application**.
-<img width="351" height="400" alt="image" src="https://github.com/user-attachments/assets/cf3181db-0ab9-40a3-aa2d-c1f88f00b0a9" />
+3. Select **Run > Run As > STM32 C/C++ Application**.<img width="351" height="400" alt="image" src="https://github.com/user-attachments/assets/cf3181db-0ab9-40a3-aa2d-c1f88f00b0a9" />
 
 4. All three LEDs should turn on as shown [here](https://github.com/HuiLing226/Lim_Doc/blob/58f31a84076bca19cfe209f20ab9ca0ee89c6012/STM32/StartUp/op.jpg).
 
@@ -79,7 +73,8 @@ while (1)
    - PC13 → ARM Cortex-M4
      
 ### 2. Generate code
-### 3. Under CM7/Core/Src/main.c, write code in `while(1)`
+### 3. Write code in `while(1)`
+##### Under CM7/Core/Src/main.c, 
 
 ```c
 /* USER CODE BEGIN WHILE */
@@ -91,8 +86,7 @@ while (1)
 /* USER CODE END WHILE */
 ```
 
-### 4. Under CM4/Core/Src/main.c, write code in `while(1)`
-
+##### Under CM4/Core/Src/main.c,
 ```c
 /* USER CODE BEGIN WHILE */
 while (1)
@@ -111,19 +105,22 @@ while (1)
 ```
 
 ### 5. Build and upload.
-1. Go to **Project > Build Project** to compile the code.
-2. Select **Run > Debug Configurations**.
-   - Under CM7 Debug > Startup, add a CM4 file, and set as below
-
-<img width="158" height="225" alt="image" src="https://github.com/user-attachments/assets/90a075b1-ebe0-43b6-9e7b-abd7ac6a8b74" />
-   - Under CM4 Debug > Startup, edit the file, turn off the download option
+1. Go to **Project > Build Project** for both CM7 and CM4 projects and ensure both `main.c` are compiled into their own binaries.
+2. To flash the program on both cores at a time, go to **Run > Debug Configurations** and set as follows (or else you can also run the program respectively under both CM7 and CM4 projects):
+   ###### CM7 Debug Configuration (the master core):
+   - Under Startup: Add the CM4 binary file to also be loaded (so both cores are flashed in one go).
      
-      
-<img width="1147" height="694" alt="image" src="https://github.com/user-attachments/assets/50c16051-5f44-4ac8-b4d3-9fe99185e208" />
-<img width="158" height="225" alt="image" src="https://github.com/user-attachments/assets/73089217-6b8f-46aa-b313-29d1117446e8" />
+     <img width="158" height="225" alt="image" src="https://github.com/user-attachments/assets/90a075b1-ebe0-43b6-9e7b-abd7ac6a8b74" />
+   - Under Debugger: Keep reset mode = Connect under reset and tick the *'Halt all cores'*.<img width="1147" height="694" alt="image" src="https://github.com/user-attachments/assets/0523693e-5e08-4d80-9dcd-ac7476a9efd8" />
+
+    ###### CM4 Debug Configuration (the secondary core)
+   - Under Startup: Disable *'Download'* (because CM7 already flashes CM4’s firmware).<img width="158" height="225" alt="image" src="https://github.com/user-attachments/assets/73089217-6b8f-46aa-b313-29d1117446e8" />
+
+   - Under Debugger: Set the *reset behaviour* as *None* <img width="1147" height="694" alt="image" src="https://github.com/user-attachments/assets/1e5ac73d-e563-465a-ae8b-7f9b0b92d704" />
+
 
 3. Run the program.
-4. The output should be: [click_here]
+4. The output should be: [click_here](https://drive.google.com/file/d/1jHxvo-P2obyEi_40_0Gu8UYzI2F9RfVP/view?usp=sharing)
     - Green LED toggles every 500 ms.
     - Press User Button → Red LED turns ON.
     - Release Button → Red LED turns OFF.
