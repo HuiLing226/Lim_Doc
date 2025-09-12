@@ -1,7 +1,6 @@
 # Deploying a Neural Network to an MCU (STM32)
 
 Once you have trained a neural network (e.g., MNIST in Google Colab), the next step is to **deploy it on a microcontroller**.  
-This requires optimization, conversion, and integration into your firmware.
 
 ---
 
