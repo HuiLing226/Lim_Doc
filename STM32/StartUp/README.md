@@ -98,7 +98,7 @@ while (1)
 while (1)
 {    
     // If button is pressed (active LOW on PC13)
-    if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13) == GPIO_PIN_RESET)
+    if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13) == GPIO_PIN_SET)
     {
         HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET); // Red LED ON
     }
