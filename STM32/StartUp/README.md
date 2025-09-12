@@ -63,7 +63,7 @@ while (1)
 3. Select **Run > Run As > STM32 C/C++ Application**.
 <img width="351" height="400" alt="image" src="https://github.com/user-attachments/assets/cf3181db-0ab9-40a3-aa2d-c1f88f00b0a9" />
 
-4. All three LEDs should turn on as shown [here].
+4. All three LEDs should turn on as shown [here](https://github.com/HuiLing226/Lim_Doc/blob/58f31a84076bca19cfe209f20ab9ca0ee89c6012/STM32/StartUp/op.jpg).
 
 ---
 
