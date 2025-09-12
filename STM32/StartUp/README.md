@@ -67,24 +67,36 @@ while (1)
 
 ---
 
-## Chap 03: Second Program – Toggle Green LED, Press Button → Red LED ON
+## Chap 03: Second Program – Toggle Green LED (M7 core), Press Button → Red LED ON(M4 core)
 ### 1. Configure Pin
 1. In the **Pinout & Configuration**, set
-   - PB0 → `GPIO_Output` (Green LED)
+   - PB0 → `GPIO_Output` (Green LED) 
    - PB14 → `GPIO_Output` (Red LED)
    - PC13 → `GPIO_Input` (User Button), can refer to the schematic [here](https://github.com/HuiLing226/Lim_Doc/blob/7da4ec7e2d9e35bde300ad8c19532d9a24745dea/Nucleo_H755/ref/Sch_Button.png)
+2. Under **Pin Context Assignment**, set
+   - PB0 → ARM Cortex-M7
+   - PB14 → ARM Cortex-M4
+   - PC13 → ARM Cortex-M4
      
 ### 2. Generate code
-### 3. Write code in `main.c`
+### 3. Under CM7/Core/Src/main.c, write code in `while(1)`
 
-```
+```c
 /* USER CODE BEGIN WHILE */
 while (1)
 {
     // Toggle Green LED every 500 ms
     HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0);
     HAL_Delay(500);
+/* USER CODE END WHILE */
+```
 
+### 4. Under CM4/Core/Src/main.c, write code in `while(1)`
+
+```c
+/* USER CODE BEGIN WHILE */
+while (1)
+{    
     // If button is pressed (active LOW on PC13)
     if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13) == GPIO_PIN_RESET)
     {
@@ -98,8 +110,20 @@ while (1)
 /* USER CODE END WHILE */
 ```
 
-### 4. Build and upload.
-The output should be: [click_here]
-- Green LED toggles every 500 ms.
-- Press User Button → Red LED turns ON.
-- Release Button → Red LED turns OFF.
+### 5. Build and upload.
+1. Go to **Project > Build Project** to compile the code.
+2. Select **Run > Debug Configurations**.
+   - Under CM7 Debug > Startup, add a CM4 file, and set as below
+
+<img width="158" height="225" alt="image" src="https://github.com/user-attachments/assets/90a075b1-ebe0-43b6-9e7b-abd7ac6a8b74" />
+   - Under CM4 Debug > Startup, edit the file, turn off the download option
+     
+      
+<img width="1147" height="694" alt="image" src="https://github.com/user-attachments/assets/50c16051-5f44-4ac8-b4d3-9fe99185e208" />
+<img width="158" height="225" alt="image" src="https://github.com/user-attachments/assets/73089217-6b8f-46aa-b313-29d1117446e8" />
+
+3. Run the program.
+4. The output should be: [click_here]
+    - Green LED toggles every 500 ms.
+    - Press User Button → Red LED turns ON.
+    - Release Button → Red LED turns OFF.
