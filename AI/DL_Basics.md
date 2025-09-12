@@ -106,8 +106,7 @@ A single neuron is limited. To solve real problems, neurons are connected into l
 ---
 
 ## CHAP 3: Practical Implementation
-### Google Colab
-
+#### Google Colab
 - Free cloud Jupyter environment from Google.
 - Preinstalled with TensorFlow, NumPy.
 - Free GPU acceleration.
@@ -120,15 +119,18 @@ A single neuron is limited. To solve real problems, neurons are connected into l
 4. Saves automatically to Google Drive  
 
 Enable GPU:  
-- Runtime → Change runtime type → GPU  
+- Runtime → Change runtime type → GPU
+  
+---
 
-### TensorFlow
-
+#### TensorFlow
 - Open-source ML library by Google.
 - `tf.keras`: High-level API for building and training networks.  
 - `tf.lite`: For deploying lightweight models on embedded devices.
+  
+---
 
-### MNIST Dataset
+#### MNIST Dataset
 - 70,000 grayscale images of handwritten digits (0–9).
 - 60,000 training + 10,000 testing samples.
 - Each image: 28 × 28 pixels.
@@ -138,18 +140,90 @@ Enable GPU:
 
 ### Your First Neural Network in Code
 #### Step 1: Import Libraries
+We use TensorFlow/Keras, which gives us convenient access to the MNIST dataset.
+Open a new notebook in Google Colab and paste this cell:
 ```python
-import tensorflow as tf
-from tensorflow import keras
+ import tensorflow as tf
+ from tensorflow import keras
+ import numpy as np
+
+ (x_train, y_train), (x_test, y_test) = keras.datasets.mnist.load_data()
 ```
+At this point:
+- x_train is an array of 60,000 images (training data).
+- y_train are the corresponding labels (digits 0–9).
+- x_test, y_test form the test set (10,000 images).
 
 #### Step 2: Preprocess Data
+Neural networks work better when inputs are normalized.
 ```python
 x_train = x_train.reshape(-1,784).astype("float32")/255
 x_test = x_test.reshape(-1,784).astype("float32")/255
 ```
+Here:
+- Each 28×28 image is flattened into a 784-element vector.
+- Pixel values are scaled to the range [0, 1].
 
 #### Step 3: Define the Model
+We start with a simple network: a single hidden layer.
+```python
+model = keras.Sequential([
+    keras.layers.Dense(128, activation="relu", input_shape=(784,)),
+    keras.layers.Dense(10, activation="softmax")
+])
+```
+Explanation:
+- Dense(128): A fully connected layer with 128 neurons and ReLU activation.
+- Dense(10): Output layer with 10 neurons (for digits 0–9), using softmax to produce probabilities.
+
+#### Step 4: Compile the Model
+We specify the optimizer, loss function, and metrics.
+```python
+model.compile(optimizer="adam",
+              loss="sparse_categorical_crossentropy",
+              metrics=["accuracy"])
+```
+- Optimizer (Adam): Adjusts weights efficiently.
+- Loss (Cross-Entropy): Measures how well predictions match labels.
+- Accuracy: Human-friendly metric for evaluation.
+  
+#### Step 5: Train the Model
+Now we let the model learn from the data.
+```python
+model.fit(x_train, y_train, epochs=5, batch_size=32)
+```
+The results are shown below:<img width="782" height="241" alt="image" src="https://github.com/user-attachments/assets/d33c5d31-7468-400c-ae43-71f2456b6c8f" />
+
+
+#### Step 6: Evaluate the Model
+Finally, we test the trained model on unseen data.
+```python
+test_loss, test_acc = model.evaluate(x_test, y_test)
+print("Accuracy:", test_acc)
+```
+The result shown below:<img width="762" height="54" alt="image" src="https://github.com/user-attachments/assets/31df6e79-fb12-4919-93bc-de21ed73e21a" />
+
+---
+## Exercises
+1. Change the number of neurons in the hidden layer.
+#### Increase neurons:
+```python
+ model = keras.Sequential([
+  keras.layers.Dense(256, activation="relu", input_shape=(784,)),
+  keras.layers.Dense(10, activation="softmax")
+ ])
+```
+Results: The accuracy increase which shown below. <img width="742" height="46" alt="image" src="https://github.com/user-attachments/assets/91328b07-95bf-4e45-9dcb-e9ac0ccb4f2b" />
+#### Decrease neurons:
+```python
+ model = keras.Sequential([
+  keras.layers.Dense(64, activation="relu", input_shape=(784,)),
+  keras.layers.Dense(10, activation="softmax")
+ ])
+```
+Results: The accuracy decrease which shown below. <img width="742" height="45" alt="image" src="https://github.com/user-attachments/assets/0392549b-1fee-46ea-ad80-e47a7cb2ed33" />
+
+2. Change the activation function from ReLU to sigmoid.
 ```python
 model = keras.Sequential([
     keras.layers.Dense(128, activation="relu", input_shape=(784,)),
@@ -157,26 +231,23 @@ model = keras.Sequential([
 ])
 ```
 
-#### Step 4: Compile the Model
-```python
-model.compile(optimizer="adam",
-              loss="sparse_categorical_crossentropy",
-              metrics=["accuracy"])
-```
+3. Train for 1, 5, and 10 epochs. Compare results.
+   ###### 1 epoch
+   <img width="365" height="26" alt="image" src="https://github.com/user-attachments/assets/a672ea91-952a-4553-b0d8-0fdfd0c33891" />
 
-#### Step 5: Train the Model
-```python
-model.fit(x_train, y_train, epochs=5, batch_size=32)
-```
+   ###### 5 epoch
+   <img width="365" height="26" alt="image" src="https://github.com/user-attachments/assets/31df6e79-fb12-4919-93bc-de21ed73e21a" />
 
-#### Step 6: Evaluate the Model
-```python
-test_loss, test_acc = model.evaluate(x_test, y_test)
-print("Accuracy:", test_acc)
-```
+   ###### 10 epoch
+   <img width="365" height="26" alt="image" src="https://github.com/user-attachments/assets/6f154a4a-e9ac-4af7-a7e9-ba72b50f8504" />
+
+- The accuracy increases significantly at first from 1 epoch to 5 epochs (~2%).
+- After that, the gain becomes very small: from 5 to 10 epochs, accuracy increases only ~0.05%.
+- This shows the model has already learned most useful patterns by epoch 5. 
+  
 ---
 
-## QNA
+## Reflection
 
 ### Why do smaller models train faster but may have lower accuracy?
 - Fewer parameters → faster computation.
