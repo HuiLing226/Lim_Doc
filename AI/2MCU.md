@@ -166,7 +166,7 @@ void MX_X_CUBE_AI_Process(void)
     /* USER CODE END 6 */
 }
 ```
-The whole project can be found [here]
+The whole project can be found [here](https://github.com/HuiLing226/Lim_Doc/tree/main/AI/stm32_project).
 
 ### Step 6: Testing
 #### 1. Build and flash the CubeIDE project.
