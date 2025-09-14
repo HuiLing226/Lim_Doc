@@ -26,6 +26,15 @@ tflite_model = converter.convert ()
 with open ("mnist_model_float32.tflite", "wb") as f:
   f.write(tflite_model)
 ```
+
+###### !! If you want to download the model from Google Colab
+```python
+
+from google.colab import files
+files.download("/content/mnist_model_float32.tflite")
+
+```
+
 ---
 ### Step 2: Quantization
 The model size is in 32-bit floating-point (FP32) which is still too big for MCUs, thus we need to convert it into 8-bit integers (INT8). 
@@ -84,25 +93,15 @@ print ("Supported ops:", interpreter.get_tensor_details ())
 #### 6. Under *Project Manager*, change the *Toolchain* to STM32CubeIDE and generate the code. 
 <img width="1571" height="867" alt="image" src="https://github.com/user-attachments/assets/e48802c2-5497-4d02-9559-4628d63815d2" />
 - CubeMX produces files such as: app_ai.c/h or app_x-cube_ai.c/h (for new ver), network.c/h, network_data.c/h.
+
+- 
 <img width="172" height="303" alt="image" src="https://github.com/user-attachments/assets/56f3b7b9-c995-441d-add7-6cb07f84c388" />
 
-#### 7. Integrate test digits. Copy digits.h (sample digits 1–5) into Core/Inc.
-<img width="486" height="339" alt="image" src="https://github.com/user-attachments/assets/07e26a4e-9e0b-4f8a-bdb5-0572fb49a905" />
+#### 7. Integrate test digits. Generate sample digits (1-5) using Python and export them as digits.h. 
+The digits.h file can be obtained from [here](https://github.com/HuiLing226/Lim_Doc/blob/d4939648f90997734b5150280479212380671887/AI/sample.py).
 
-```h
-# ifndef DIGITS_H
-# define DIGITS_H
-# include <stdint.h>
+After that, copy the `digits.h` file into (Project)_CM7/Core/Inc.
 
-extern const int8_t digit1 [28*28];
-extern const int8_t digit2 [28*28];
-extern const int8_t digit3 [28*28];
-extern const int8_t digit4 [28*28];
-extern const int8_t digit5 [28*28];
-
-# endif // DIGITS_H
-```
----
 
 ### Step 5: Running inference
 Under *app_x-cube_ai.c*, modify the n MX_X_CUBE_AI_Process() to load a test digit and print the prediction.
