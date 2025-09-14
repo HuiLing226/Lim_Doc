@@ -1,5 +1,18 @@
+# DSP for Audio
 
-### Download bird sound and view waveform
+
+## Chap 1: Audio Signal Basics
+- An audio signal is a continuous pressure wave in air.
+- To process digitally, it is converted into numbers through **sampling** and **quantization**.
+- **Sampling rate** = number of samples per second.
+  - Example: 16 kHz → 16,000 samples/sec.
+- **Bit depth** = number of bits per sample.
+  - Example: 16-bit → values from −32768 to +32767.
+- **Nyquist theorem**: sampling rate ≥ 2 × maximum frequency of interest.
+  - For bird sounds (approx around 1k - 8kHz):
+  - Common: 16 kHz or 22.05 kHz.
+
+#### Download bird sound and view waveform
 ```python
 import librosa
 import librosa.display
@@ -28,7 +41,13 @@ plt.show ()
 ```
 The output is shown below: <img width="505" height="188" alt="image" src="https://github.com/user-attachments/assets/035ea055-4704-48b3-95ea-1860dbb3d70b" />
 
-### Removing the noise using high pass FIR
+---
+## Chap 2: Fundamental DSP Algorithms
+
+Before extracting features from audio, we need to understand basic DSP concepts such as **filtering** and **convolution**.  These operations help remove noise, emphasize relevant signal components, and prepare the audio for feature extraction.
+
+
+#### Removing the noise using high pass FIR
 ```python
 import requests
 import librosa
@@ -79,7 +98,31 @@ plt.show ()
 <img width="765" height="312" alt="image" src="https://github.com/user-attachments/assets/e0127741-6e0d-402a-b370-7440ed062514" />
 
 
-### Generating a spectrogram with Librosa
+---
+## Chap 3: Fourier Transform and Spectrograms
+After digital audio signals and basic filtering, the next step is analyzing audio in the frequency domain using Fourier transforms. 
+
+#### **Fourier Transform**: Converts audio from time domain → frequency domain.
+  - **DFT (Discrete Fourier Transform)**:  
+  Formula:  
+  $$X[k] = \sum_{n=0}^{N-1} x[n] e^{-j2πkn/N}, \quad k = 0,1,...,N-1$$
+  - **FFT (Fast Fourier Transform)**: Efficient algorithm for computing DFT.
+
+#### Windowing and STFT
+- Audio is **non-stationary** (frequency changes over time).  
+- Split signal into overlapping frames + apply FFT.  
+- This is the **Short-Time Fourier Transform (STFT) (standard spectrogram)**.  
+
+#### Spectrogram
+- A 2D map built by stacking STFT frames.  
+  - **X-axis**: Time  
+  - **Y-axis**: Frequency  
+  - **Color/Intensity**: Energy of frequencies  
+- Spectrograms = image-like representation of sound.  
+  - Useful for CNNs → can detect **harmonics, chirps, bird calls**.  
+- Visualization uses colormaps (e.g., `gray_r`, `magma`, `viridis`).
+
+#### Generating code for STFT spectrogram 
 ```python
 import librosa
 import librosa.display
@@ -105,14 +148,38 @@ S_db = librosa.amplitude_to_db(abs (D), ref=np.max)
 plt.figure(figsize=(10, 4))
 librosa.display.specshow(S_db, sr =sr , hop_length =512 ,
 x_axis ='time', y_axis ='hz', cmap ='viridis')
-plt.colorbar (format ="%+2.0 f dB")
+plt.colorbar (format ="%+2.0f dB")
 plt.title ("Spectrogram of Bird Sound")
 plt.tight_layout ()
 plt.show ()
 ```
-<img width="957" height="390" alt="image" src="https://github.com/user-attachments/assets/ee392ce8-71d2-41ce-9783-66b6c6b50418" />
+<img width="924" height="390" alt="image" src="https://github.com/user-attachments/assets/2d592888-c139-489a-9d36-7a5dce7c951a" />
 
-### Mel spec
+
+
+---
+
+## Chap 4: Mel Filter Bank
+- Human/bird hearing is non-linear: better resolution at low frequencies.
+- Apply **Mel filter bank** to spectrogram:
+  - Apply triangular filters on FFT bins, spaced by Mel scale.
+    - Lower frequencies → **narrower bands**
+    - Higher frequencies → **wider bands**  
+  - Each filter sums energy from its band → **Mel spectrogram**.  
+
+#### Conversions
+- **Hz → Mel**:  
+  $$m = 2595 \cdot \log_{10}\left(1 + \frac{f}{700}\right)$$
+- **Mel → Hz**:  
+  $$f = 700 \cdot \left(10^{m/2595} - 1\right)$$
+
+#### Why Mel Spectrograms Matter
+- Compact and perceptually meaningful representation.  
+- Lower dimensionality vs raw FFT spectrograms.  
+- Retains patterns crucial for **speech and bird sound classification**.  
+
+
+#### Generating code for Mel spectrogram
 ```python
 import librosa
 import librosa.display
@@ -130,14 +197,28 @@ S_db = librosa.power_to_db (S , ref=np.max)
 # Plot Mel spectrogram
 plt.figure(figsize=(10, 4))
 librosa.display.specshow(S_db, sr =sr , hop_length =512 , x_axis ='time', y_axis ='hz', cmap ='viridis')
-plt.colorbar (format ="%+2.0 f dB")
+plt.colorbar (format ="%+2.0f dB")
 plt.title ("Mel Spectrogram of Bird Sound")
 plt.tight_layout ()
 plt.show ()
 ```
 <img width="957" height="390" alt="image" src="https://github.com/user-attachments/assets/07f5c520-e691-4884-a360-84663588e2f9" />
 
-### MFCC
+---
+## Chap 5: Feature Extraction with MFCCs
+
+- **MFCCs (Mel-Frequency Cepstral Coefficients)**:  
+  - Compact representation of sound.  
+  - Capture **timbre** (spectral shape) rather than raw frequency detail.  
+
+#### Step-by-Step Computation
+1. Compute **STFT** → magnitude spectrum.  
+2. Apply **Mel filter bank** → Mel energies.  
+3. Take **logarithm** of Mel energies.  
+4. Apply **DCT** → keep 12–13 coefficients per frame. 
+
+
+#### Generating code for MFCCs
 ```python
 import librosa
 import librosa.display
@@ -163,21 +244,28 @@ plt.show ()
 ## Exercises
 1. Generate a spectrogram of a bird sound with different FFT sizes (e.g., 256, 512,
 1024). Compare the time–frequency resolution.
-   ##### FFT 256
-   ##### FFT 512
-   ##### FFT 1024
-  -
+   ##### FFT 256<img width="924" height="390" alt="image" src="https://github.com/user-attachments/assets/8505850d-9180-4ed6-9f78-6c93bf0d0f0c" />
+
+   ##### FFT 512<img width="924" height="390" alt="image" src="https://github.com/user-attachments/assets/95643020-bdee-4c64-9885-5bcf4549ad3c" />
+
+   ##### FFT 1024<img width="924" height="390" alt="image" src="https://github.com/user-attachments/assets/e1ddccd8-eb30-4648-bcad-7712682b23f6" />
+
+
   
 2. Compare the resolution of Mel filters in the low-frequency range versus the high-frequency range. Why does the Mel scale emphasize low frequencies more?
 
 3. Extract MFCCs from the same bird sound using 13 coefficients and then 20 coefficients. Compare the feature sets.
-   ##### 13 coefficients
-   ##### 20 coefficients
+   ##### 13 coefficients<img width="907" height="390" alt="image" src="https://github.com/user-attachments/assets/02462b46-46f1-4f04-89bf-4e82d26200a8" />
+
+   ##### 20 coefficients<img width="907" height="390" alt="image" src="https://github.com/user-attachments/assets/ca3ae1f4-26f2-4ff7-a0a3-5403bb0a38b0" />
+
    - 
 4. Try different colormaps (gray_r, magma, viridis) for spectrogram visualization. Which one makes the patterns easiest to see?
-   ##### gray_r
-   ##### magma
-   ##### viridis
+   ##### gray_r<img width="924" height="390" alt="image" src="https://github.com/user-attachments/assets/4edc25b4-c8c5-481b-81ad-8d69574708f2" />
+
+   ##### magma<img width="924" height="390" alt="image" src="https://github.com/user-attachments/assets/be8e36ea-6a95-428f-a995-14e0b584cfb6" />
+
+   ##### viridis<img width="924" height="390" alt="image" src="https://github.com/user-attachments/assets/e1ddccd8-eb30-4648-bcad-7712682b23f6" />
 
 ----
 
