@@ -82,7 +82,8 @@ print ("Supported ops:", interpreter.get_tensor_details ())
 <img width="1571" height="867" alt="image" src="https://github.com/user-attachments/assets/73fe83be-c1b5-419a-bfac-cf9c00e9026d" />
 
 #### 3. Under *Middleware*, open *X-CUBE-AI* and set as below:
-<img width="1711" height="963" alt="image" src="https://github.com/user-attachments/assets/73d5f297-0df7-48b8-b019-8ec21da4109e" />
+<img width="1711" height="962" alt="image" src="https://github.com/user-attachments/assets/7bd29c8e-bee1-4fac-8f69-417a534a77dc" />
+
 
 #### 4. Import the quantized model. In the AI configuration window, click Add Network → Change the *model* to *TFLite* → Import Model (can get from [here](https://github.com/HuiLing226/Lim_Doc/blob/main/AI/mnist_portenta.tflite)) → Click *Analyse*.
 <img width="1571" height="867" alt="image" src="https://github.com/user-attachments/assets/88de3103-33f3-4db4-859a-374e3f1a30a0" />
@@ -105,3 +106,16 @@ After that, copy the `digits.h` file into (Project)_CM7/Core/Inc.
 
 ### Step 5: Running inference
 Under *app_x-cube_ai.c*, modify the n MX_X_CUBE_AI_Process() to load a test digit and print the prediction.
+
+### Step 6: Testing
+#### 1. Build and flash the CubeIDE project.
+#### 2. Open TeraTerm, choose the correct serial, and set the baud rate to 115200.
+#### 3. Results:
+- using `digit1`
+- using `digit2
+- using `digit3`
+- using `digit4`
+- using `digit5`
+  
+
+ 
