@@ -250,16 +250,41 @@ plt.show ()
 
    ##### FFT 1024<img width="924" height="390" alt="image" src="https://github.com/user-attachments/assets/e1ddccd8-eb30-4648-bcad-7712682b23f6" />
 
+   ##### Time–Frequency Resolution Comparison
 
-  
+  | Window Size | Time Resolution | Frequency Resolution | Characteristics |
+|----------------------|-----------------|----------------------|-----------------|
+  | Short (fft 256)      | High (sharp in time, good for onsets) | Low (blurry frequency bands) | Clear timing of syllables, but pitch/harmonics less precise |
+  | Medium (fft 512)     | Moderate        | Moderate             | Balanced view of time and frequency |
+  | Long (fft 1024)      | Low (harder to detect fast syllables) | High (clear frequency details, harmonics visible) | Good pitch/harmonic resolution, but temporal smearing |
+
+
 2. Compare the resolution of Mel filters in the low-frequency range versus the high-frequency range. Why does the Mel scale emphasize low frequencies more?
+  - Low frequency → more filters → higher resolution → can distinguish small pitch differences.
+  - High frequency → fewer filters → lower resolution → details are “compressed” together.
+  - Mel scale emphasizes low frequencies because:
+    - Human ears are more sensitive to pitch changes at low frequencies (below ~1 kHz).
+    - At high frequencies, our perception is less precise — we can’t distinguish small differences as well.
 
+    
 3. Extract MFCCs from the same bird sound using 13 coefficients and then 20 coefficients. Compare the feature sets.
    ##### 13 coefficients<img width="907" height="390" alt="image" src="https://github.com/user-attachments/assets/02462b46-46f1-4f04-89bf-4e82d26200a8" />
 
    ##### 20 coefficients<img width="907" height="390" alt="image" src="https://github.com/user-attachments/assets/ca3ae1f4-26f2-4ff7-a0a3-5403bb0a38b0" />
 
-   - 
+   ##### Comparison of MFCC Feature Sets
+
+| Aspect                  | First MFCC Set                               | Second MFCC Set                              |
+|--------------------------|-----------------------------------------------|-----------------------------------------------|
+| **Low-frequency bands** | Stronger variation, intense negative values (−400 to −450), more irregular patterns | Still strong, but smoother and more consistent |
+| **High-frequency bands**| Noisier, less distinct structure              | More stable, clearer separation                |
+| **Temporal consistency**| Fluctuates erratically, irregular patches     | Smoother, with clearer band-like patterns      |
+| **Noise level**         | Higher noise, possibly less pre-processing    | Lower noise, may include filtering or normalization |
+| **Overall structure**   | Appears chaotic, less interpretable features  | More structured and interpretable features     |
+
+
+
+  
 4. Try different colormaps (gray_r, magma, viridis) for spectrogram visualization. Which one makes the patterns easiest to see?
    ##### gray_r<img width="924" height="390" alt="image" src="https://github.com/user-attachments/assets/4edc25b4-c8c5-481b-81ad-8d69574708f2" />
 
@@ -267,10 +292,12 @@ plt.show ()
 
    ##### viridis<img width="924" height="390" alt="image" src="https://github.com/user-attachments/assets/e1ddccd8-eb30-4648-bcad-7712682b23f6" />
 
-----
+   ##### Colormap Comparison for Spectrogram Visualization
 
-## Reflection
-1. Why does increasing FFT size improve frequency resolution but worsen time resolution?
-2. Why are Mel spectrograms better aligned with human hearing than linear spectrograms?
-3. Why are MFCCs popular in speech recognition, but sometimes less effective in bird sound analysis?
-4. How might the choice of features (spectrogram vs. Mel vs. MFCC) affect neural network performance?
+| Colormap   | Characteristics                                                                 | Ease of Seeing Patterns |
+|------------|---------------------------------------------------------------------------------|--------------------------|
+| **gray_r** | Reversed grayscale. Dark = strong energy, light = weak. Standard in audio work. | Clear and familiar, good for quick interpretation. |
+| **magma**  | Perceptually uniform. Dark purple → yellow. Highlights subtle intensity changes. | Excellent for fine detail, great for distinguishing harmonics. |
+| **viridis**| Perceptually uniform and colorblind-friendly. Dark blue → green → yellow.        | Strong contrast, good separation of frequency bands and intensities. |
+
+
