@@ -88,7 +88,7 @@ print ("Supported ops:", interpreter.get_tensor_details ())
   ##### !! Important: Use Cortex-M7
 
 - Add Network → Change the *model* to *TFLite*
-- Import Model (can get from [here](https://github.com/HuiLing226/Lim_Doc/blob/main/AI/mnist_portenta.tflite)). <img width="1571" height="867" alt="image" src="https://github.com/user-attachments/assets/88de3103-33f3-4db4-859a-374e3f1a30a0" />
+- Import Model (can get from [here](https://github.com/HuiLing226/Lim_Doc/blob/da058006d96ac7d6283e28457b0bb8b18b7ced84/AI/.tflite/mnist_portenta.tflite)). <img width="1571" height="867" alt="image" src="https://github.com/user-attachments/assets/88de3103-33f3-4db4-859a-374e3f1a30a0" />
 - → Click *Analyse* to check resource usage.
   
 #### 4.3 Check resource usage <img width="808" height="272" alt="image" src="https://github.com/user-attachments/assets/57d81c07-9fd2-4d2e-98e7-a8561d618c29" />
@@ -102,7 +102,7 @@ print ("Supported ops:", interpreter.get_tensor_details ())
   - <img width="172" height="303" alt="image" src="https://github.com/user-attachments/assets/56f3b7b9-c995-441d-add7-6cb07f84c388" />
 
 #### 4.5 Integrate test digits
-- Generate sample digits (1-5) using Python ([mnist_digits.py](https://github.com/HuiLing226/Lim_Doc/blob/main/AI/mnist_digits.py)) → export to [digits.h]. 
+- Generate sample digits (1-5) using Python ([mnist_digits.py](https://github.com/HuiLing226/Lim_Doc/blob/da058006d96ac7d6283e28457b0bb8b18b7ced84/AI/.py/mnist_digits.py)) → export to [digits.h](https://github.com/HuiLing226/Lim_Doc/blob/da058006d96ac7d6283e28457b0bb8b18b7ced84/AI/TestDigits/CM7/Core/Inc/digits.h). 
 - Copy `digits.h` file into (Project)_CM7/Core/Inc.
 
     <img width="199.5" height="157.5" alt="image" src="https://github.com/user-attachments/assets/4163140f-24af-49ca-8c21-c401829cf4dd" />
