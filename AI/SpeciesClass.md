@@ -24,7 +24,7 @@ Instead of precomputing all spectrograms, each audio file is:
   ```
 - This ensures that only **a single batch is kept in memory at any time**, reducing RAM usage drastically and enabling training to start immediately without waiting to load the entire dataset.
 
-#### ## The full modified Python script implementing this memory-efficient data loading approach can be found [here](https://github.com/HuiLing226/Lim_Doc/blob/main/AI/species_modified.py).
+#### ## The full modified Python script implementing this memory-efficient data loading approach can be found [here](AI/.py/species_modified.py).
 ---
 
 ## Exercises
