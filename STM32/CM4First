@@ -1,6 +1,6 @@
 
 
-1. **Flashing M4 first (BOOT0 low)**:
+1. **Flashing M4 first (BOOT0 low)**
 
    * CM4 starts running immediately after reset.
    * If CM4 code tries to access Flash or shared resources before CM7 has initialized the system, it can **lock the Flash controller or the debug interface**.
