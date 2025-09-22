@@ -1,0 +1,16 @@
+
+
+1. **Flashing M4 first (BOOT0 low)**:
+
+   * CM4 starts running immediately after reset.
+   * If CM4 code tries to access Flash or shared resources before CM7 has initialized the system, it can **lock the Flash controller or the debug interface**.
+   * As a result, the debugger cannot connect → “target not responding.”
+
+2. **Setting BOOT0 high**:
+
+   * Forces the MCU to **boot from system memory (ST’s built-in bootloader)** instead of your Flash.
+   * This clears the problematic state, allowing the debugger to communicate with the board again.
+   * After that, you can re-flash CM7 and CM4 safely.
+Key point: **you should never let CM4 run before CM7 initializes the system** on STM32H7 dual-core boards. CM7 is the “master” core and must start first, then release CM4 using HSEM or STOP mode.
+
+
