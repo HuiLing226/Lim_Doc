@@ -62,25 +62,3 @@ void HAL_I2S_RxCpltCallback(I2S_HandleTypeDef *hi2s) {
 
 ---
 
-## 4. Signal Processing Pipeline
-
-1. **Sampling**
-   - Configure I²S1 at **32 kHz** sample rate  
-   - DMA buffer size: `FRAME_SIZE * 2` (e.g., 512 × 2)
-
-2. **Pre-processing**
-   - Convert raw audio → floating point
-   - Apply **Hamming window**
-
-3. **FFT**
-   - Use CMSIS-DSP `arm_rfft_fast_f32`
-   - Compute magnitude spectrum
-
-4. **Mel Filterbank**
-   - Pre-compute filter bank (e.g., 40 mel bins, FFT size 512)
-   - Apply triangular filters → log-scaled mel spectrum
-
-5. **Spectrogram**
-   - Store mel features in a 2D circular buffer `melSpectrogram[N_FRAMES][N_MELS]`
-
----
