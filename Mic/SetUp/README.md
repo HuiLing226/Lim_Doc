@@ -38,7 +38,7 @@ Refer to the Nucleo H755 schematics:
 ## 3. Test the functionality of the mic
 1. Debug using **SWV ITM Data Console** -- watch the waveform
 2. code
-    ```c
+```c
 /* USER CODE BEGIN PV */
 int32_t data_i2s[100];          
 volatile int32_t sample_i2s = 0; 
@@ -54,7 +54,7 @@ void HAL_I2S_RxCpltCallback(I2S_HandleTypeDef *hi2s) {
     sample_i2s = data_i2s[0];  // pick first sample of second half
 }
 /* USER CODE END 4 */
-    ```
+```
 
 3. Results:
 - at silence
