@@ -35,9 +35,7 @@ Refer to the Nucleo H755 schematics:
      
 ---
 
-## 3. Test the functionality of the mic
-1. Debug using **SWV ITM Data Console** -- watch the waveform
-2. code
+## 3. Code
 ```c
 /* USER CODE BEGIN PV */
 int32_t data_i2s[100];          
@@ -57,8 +55,16 @@ void HAL_I2S_RxCpltCallback(I2S_HandleTypeDef *hi2s) {
 ```
 
 --- 
+## 4. Test the functionality of the mic
+1. Debug using **SWV ITM Data Console** -- watch the waveform.
+   - Enable the `debug` mode, and it will automatically set the pins <img width="663" height="705" alt="image" src="https://github.com/user-attachments/assets/4cc7073c-afae-47c1-8fd3-773ce9e3d523" />
+   - Under debug configuration - debugger - enable the SWV <img width="1147" height="694" alt="image" src="https://github.com/user-attachments/assets/bf06629a-948d-4799-8314-2996ab30fab0" />
+   - Debug
+   - Open SWV Data Trace Timeline Graph <img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/d19d5ede-29ec-4bdb-94e7-e6aeab6322d5" />
+   - Start Trace and press `resume`<img width="1034" height="1020" alt="image" src="https://github.com/user-attachments/assets/829ad93e-f3d9-4fc5-a5fd-16dc5cd3474d" />
 
-3. Results:
+
+2. Results:
 ![with and without bird](https://github.com/user-attachments/assets/43896961-40f4-4b7d-b19c-7a6731d7d4af)
 ** Bird sound in between 18.25s - 23.75s.
 
