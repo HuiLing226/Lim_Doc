@@ -56,6 +56,8 @@ void HAL_I2S_RxCpltCallback(I2S_HandleTypeDef *hi2s) {
 /* USER CODE END 4 */
 ```
 
+--- 
+
 3. Results:
 - at silence
 - with sound
