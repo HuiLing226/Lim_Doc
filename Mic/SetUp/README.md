@@ -59,8 +59,7 @@ void HAL_I2S_RxCpltCallback(I2S_HandleTypeDef *hi2s) {
 --- 
 
 3. Results:
-- at silence
-- with sound
+![with and without bird](https://github.com/user-attachments/assets/43896961-40f4-4b7d-b19c-7a6731d7d4af)
+** Bird sound in between 18.25s - 23.75s.
 
----
 
