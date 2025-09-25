@@ -25,6 +25,8 @@ Instead of precomputing all spectrograms, each audio file is:
 - This ensures that only **a single batch is kept in memory at any time**, reducing RAM usage drastically and enabling training to start immediately without waiting to load the entire dataset.
 
 #### ## The full modified Python script implementing this memory-efficient data loading approach can be found [here](https://github.com/HuiLing226/Lim_Doc/blob/da058006d96ac7d6283e28457b0bb8b18b7ced84/AI/.py/species_modified.py).
+
+#### ## The model is then converted into [.tflite file] (https://github.com/HuiLing226/Lim_Doc/blob/main/AI/.tflite/class_int8.tflite)
 ---
 
 
