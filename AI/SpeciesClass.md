@@ -30,26 +30,4 @@ Instead of precomputing all spectrograms, each audio file is:
 
 
 
-## Exercises
-  1. Replace the SEAbird dataset with Putra dataset from UPM: https://drive.google.com/drive/folders/1HvR_sbEx5rzWjgTWkyjplUXgzsQkEgzH?usp=sharing.
-  5. Experiment with different pre-trained models (VGG16, ResNet50, EfficientNet) instead of MobileNetV3 and compare their performance on the seabird classification task.
-     **Action**: Replace `MobileNetV3Small` in your code with other pre-trained architectures from Keras Applications:
-     ```python
-     from tensorflow.keras.applications import VGG16, ResNet50, EfficientNetB0
-     # Example for VGG16
-     base_model = VGG16(input_shape=(224,224,3), include_top=False, weights="imagenet")
-     # Or for ResNet50
-     # base_model = ResNet50(input_shape=(224,224,3), include_top=False, weights="imagenet")
-     # Or for EfficientNet
-     # base_model = EfficientNetB0(input_shape=(224,224,3), include_top=False, weights="imagenet")
-  **Results**:
-  | Model          | Val Accuracy | Test Accuracy | Training Time (min) | Model Size (MB) |
-| -------------- | ------------ | ------------- | ------------------- | --------------- |
-| MobileNetV3    |          |           |                 |            |
-| VGG16          |          |           |                |             |
-| ResNet50       |          |           |                |             |
-| EfficientNetB0 |          |           |                 |            |
 
-
-    
-  7. Implement audio data augmentation techniques (pitch shifting, time stretching, background noise addition) and measure the impact on model generalization and test accuracy.
